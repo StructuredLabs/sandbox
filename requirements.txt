@@ -1,0 +1,3 @@
+transformers
+Flask
+snorkel==0.9.6
