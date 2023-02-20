@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, session, send_file
 from flask_cors import CORS
 import json
 import os
@@ -6,7 +6,7 @@ import pandas as pd
 from pprint import pprint
 import io
 from transformers import pipeline
-from snorkel.labeling.model import LabelModel
+from snorkel.labeling.model.label_model import LabelModel
 
 app = Flask(__name__)
 CORS(app)
@@ -15,6 +15,7 @@ CORS(app)
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'csv'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.secret_key = 'some_secret'
 
 # Check if a filename has an allowed file extension
 def allowed_file(filename):
@@ -33,6 +34,7 @@ def upload_file():
    if request.method == 'POST':
        f = request.files['file']
        f.save(f.filename)
+       session['filename'] = f.filename
        return render_template('index.html',msg="Success")
 
 # Handle file downloads
@@ -44,10 +46,11 @@ def download_file():
     except Exception as e:
         return str(e)
 
+# Generate Labels
 @app.route('/label')
 def generate_label():
-    # run_labeling()
-    return 'Labeling!'
+    run_labeling()
+    return render_template('index.html',labeling_msg="Labeling.")
 
 """### Labeling Functions"""
 
@@ -75,9 +78,8 @@ def convert_value(x):
     return 'Acceptable' if x == 0 else 'Not Acceptable'
 
 def run_labeling():
-    filename = request.args.get('filename')
+    filename = session.get('filename')
     df = pd.read_csv(filename)
-    sentiment_model = pipeline('sentiment-analysis') # Sentiment Analysis
     category_labels = [get_category(text) for text in df['Category']]
     sentiment_labels = [get_sentiment(text) for text in df['Comments']]
     rating_labels = [get_rating(text) for text in df['Rating']]
@@ -96,9 +98,11 @@ def run_labeling():
     label_model.fit(label_matrix)
     df_final = df.copy()
     df_final['Prediction'] = label_model.predict(label_matrix) == 0
-    df_final.to_csv(filename+'_final', index=False)
+    base_name, extension = os.path.splitext(filename)
+    df_final.to_csv(base_name+'_final.csv', index=False)
 
 if __name__ == '__main__':
+    sentiment_model = pipeline('sentiment-analysis') # Sentiment Analysis
     app.run(debug=True)
 
 

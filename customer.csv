@@ -1,0 +1,19 @@
+Date,UserID,TicketID,Issue,Category,Status,Rating,Comments,SubscriptionType,PaymentStatus
+2023-01-01,10001,12345678,Slow internet connection,Internet,Open,3,"The internet has been slow for several days now.",Monthly,Unpaid
+2023-01-02,10002,12345679,Unable to connect to Wi-Fi,Internet,Closed,4,"The problem was resolved quickly by customer support.",Monthly,Paid
+2023-01-03,10003,12345680,Printer not working,Hardware,Open,2,"I've tried everything but the printer still won't work.",Annual,Unpaid
+2023-01-04,10004,12345681,Blue screen error,Software,Closed,5,"The technician was able to fix the issue in no time.",Monthly,Paid
+2023-01-05,10005,12345682,Email not sending,Email,Open,1,"I'm not able to send any emails from my account.",Annual,Unpaid
+2023-01-06,10006,12345683,Slow computer performance,Hardware,Closed,3,"The computer is still a bit slow, but it works better now.",Monthly,Paid
+2023-01-07,10007,12345684,Website not loading,Internet,Open,4,"The website keeps timing out and won't load properly.",Monthly,Unpaid
+2023-01-08,10008,12345685,Keyboard not responding,Hardware,Closed,5,"The technician replaced the keyboard and it works perfectly now.",Annual,Paid
+2023-01-09,10009,12345686,Cant access shared drive,Software,Open,2,"I need access to the shared drive for work, please help.",Monthly,Unpaid
+2023-01-10,10010,12345687,Computer won't turn on,Hardware,Closed,1,"I tried everything but the computer still won't turn on.",Monthly,Paid
+2023-01-11,10011,12345688,Email account hacked,Security,Open,3,"Someone has hacked into my email account and is sending spam.",Annual,Unpaid
+2023-01-12,10012,12345689,Printer jam,Hardware,Closed,4,"The technician was able to fix the printer jam quickly.",Monthly,Paid
+2023-01-13,10013,12345690,Cant connect to VPN,Software,Open,5,"The customer support team was very helpful in resolving the issue.",Monthly,Unpaid
+2023-01-14,10014,12345691,Website layout issue,Website,Closed,2,"The website layout is messed up and it's hard to navigate.",Annual,Paid
+2023-01-15,10015,12345692,Computer infected with virus,Security,Open,1,"I think my computer has been infected with a virus.",Monthly,Unpaid
+2023-01-16,10016,12345693,Printer out of ink,Hardware,Closed,3,"The technician replaced the ink cartridge and it works fine now.",Monthly,Paid
+2023-01-17,10017,12345694,Cant open attachments,Email,Open,4,"I'm not able to open any attachments in my email.",Annual,Unpaid
+2023-01-18,10018,12345695,Computer overheating,Hardware,Closed,5,"The technician was able.",Annual,Unpaid
